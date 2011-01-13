@@ -1,0 +1,5 @@
+kernel vec4 sinexample(sampler src)
+{
+  vec2 dc = destCoord() + 5 * sin(destCoord() / 10);
+  return sample(src, samplerTransform(src, dc));
+}

@@ -1,0 +1,19 @@
+; IR builtin
+declare <4 x float> @sin_v2(<4 x float>) nounwind readnone
+
+; Sampler function proper
+define <4 x float> 
+  @sampler_35014ecb_ea33_8994_f1ed_88ceb0e101b7(<4 x float>) {
+entry:
+  %tmp.i = call <4 x float> @sin_v2(<4 x float> %0) nounwind 
+  %tmp3.i = fmul <4 x float> %tmp.i, <float 5.000000e-01, 
+    float 5.000000e-01, float 0.000000e+00, float 0.000000e+00>
+  %tmp6.i = fadd <4 x float> %tmp3.i, <float 5.000000e-01, 
+    float 5.000000e-01, float 0.000000e+00, float 0.000000e+00> 
+  %tmp13.i = insertelement <4 x float> %tmp6.i, 
+    float 0.000000e+00, i32 2
+  %tmp14.i = insertelement <4 x float> %tmp13.i, 
+    float 1.000000e+00, i32 3
+  ret <4 x float> %tmp14.i
+}
+

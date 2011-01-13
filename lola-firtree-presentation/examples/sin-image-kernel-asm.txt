@@ -1,0 +1,21 @@
+; Intrinsics
+declare <4 x float> @sin_v2(<4 x float>) nounwind readnone
+declare <4 x float> @samplerTransform_sv2(i32, <4 x float>) nounwind readnone
+declare <4 x float> @sample_sv2(i32, <4 x float>) nounwind readnone
+
+; Kernel function
+define <4 x float> 
+  @kernel_4bcd26e6_ec72_7454_f967_7b7d92125bba(
+    <4 x float> %__this__destCoord, i32 %src) nounwind readnone {
+entry:
+  %tmp3 = fdiv <4 x float> %__this__destCoord, <float 1.000000e+01, 
+    float 1.000000e+01, float 0.000000e+00, float 0.000000e+00> 
+  %tmp4 = call <4 x float> @sin_v2(<4 x float> %tmp3) 
+  %tmp8 = fmul <4 x float> %tmp4, <float 5.000000e+00, float 5.000000e+00,
+    float 0.000000e+00, float 0.000000e+00> 
+  %tmp9 = fadd <4 x float> %tmp8, %__this__destCoord 
+  %tmp13 = call <4 x float> @samplerTransform_sv2(i32 %src, <4 x float> %tmp9) 
+  %tmp14 = call <4 x float> @sample_sv2(i32 %src, <4 x float> %tmp13) 
+  ret <4 x float> %tmp14
+}
+

@@ -1,0 +1,224 @@
+	.file	""
+
+
+	.section	.rodata.cst8,"aM",@progbits,8
+	.align	8
+.LCPI1_0:                                                   # constant double
+	.quad	4841369599423283200                         # double 4.503600e+15
+	.section	.rodata.cst4,"aM",@progbits,4
+	.align	4
+.LCPI1_1:                                                   # constant float
+	.long	1056964608                                  # float 5.000000e-01
+.LCPI1_2:                                                   # constant float
+	.long	998277249                                   # float 3.921569e-03
+.LCPI1_3:                                                   # constant float
+	.long	1065353216                                  # float 1.000000e+00
+	.section	.rodata.cst16,"aM",@progbits,16
+	.align	16
+.LCPI1_4:                                                   # constant <4 x i32>
+	.zero	16
+	.text
+	.align	16
+	.globl	render_FIRTREE_FORMAT_RGBA_F32_PREMULTIPLIED
+	.type	render_FIRTREE_FORMAT_RGBA_F32_PREMULTIPLIED,@function
+render_FIRTREE_FORMAT_RGBA_F32_PREMULTIPLIED:               # @render_FIRTREE_FORMAT_RGBA_F32_PREMULTIPLIED
+.LBB1_0:                                                    # %entry
+	pushl	%ebp
+	movl	%esp, %ebp
+	andl	$-16, %esp
+	pushl	%ebx
+	pushl	%esi
+	subl	$40, %esp
+	cmpl	$0, 16(%ebp)
+	je	.LBB1_10
+.LBB1_1:                                                    # %entry
+	movl	12(%ebp), %eax
+	testl	%eax, %eax
+	je	.LBB1_10
+.LBB1_2:                                                    # %bb.nph22.split
+	movsd	.LCPI1_0, %xmm0
+	movd	16(%ebp), %xmm1
+	orps	%xmm0, %xmm1
+	subsd	%xmm0, %xmm1
+	cvtsd2ss	%xmm1, %xmm1
+	movl	24(%ebp), %ecx
+	movss	12(%ecx), %xmm2
+	divss	%xmm1, %xmm2
+	movss	%xmm2, (%esp)
+	movaps	%xmm2, %xmm1
+	movss	.LCPI1_1, %xmm2
+	mulss	%xmm2, %xmm1
+	movss	%xmm1, 8(%esp)
+	movd	%eax, %xmm1
+	orps	%xmm0, %xmm1
+	subsd	%xmm0, %xmm1
+	cvtsd2ss	%xmm1, %xmm0
+	movss	8(%ecx), %xmm1
+	divss	%xmm0, %xmm1
+	mulss	%xmm1, %xmm2
+	movss	%xmm2, 16(%esp)
+	movss	4(%ecx), %xmm0
+	movss	(%ecx), %xmm2
+	movss	%xmm2, 20(%esp)
+	movl	8(%ebp), %ecx
+	movl	%ecx, 24(%esp)
+	cmpl	$1, %eax
+	movl	$1, %ecx
+	cmova	%eax, %ecx
+	movl	%ecx, 4(%esp)
+	movl	$0, 12(%esp)
+	movss	.LCPI1_2, %xmm2
+	movss	.LCPI1_3, %xmm3
+.LBB1_3:                                                    # %bb
+                                                            # Loop Depth 1
+                                                            # Loop Header
+                                                            #   Child Loop BB1_12 Depth 2
+                                                            #   Child Loop BB1_6 Depth 2
+	movss	8(%esp), %xmm4
+	addss	%xmm0, %xmm4
+	movss	%xmm4, 8(%esp)
+	pxor	%xmm0, %xmm0
+	ucomiss	%xmm4, %xmm0
+	movl	$0, %eax
+	movl	$4294967295, %ecx
+	cmova	%ecx, %eax
+	cvttss2si	%xmm4, %ecx
+	leal	(%eax,%ecx), %edx
+	shll	$11, %edx
+	movl	%edx, 28(%esp)
+	addl	%ecx, %eax
+	js	.LBB1_5
+.LBB1_4:                                                    # %bb
+                                                            # Loop Depth 1
+                                                            # Loop Header is BB1_3
+	cmpl	$511, %eax
+	jbe	.LBB1_11
+.LBB1_5:                                                    # %bb1.us.preheader
+                                                            # Loop Depth 1
+                                                            # Loop Header is BB1_3
+	movl	24(%esp), %eax
+	movl	4(%esp), %ecx
+	movss	16(%esp), %xmm0
+	movss	20(%esp), %xmm4
+	.align	16
+.LBB1_6:                                                    # %bb1.us
+                                                            # Loop Depth 2
+                                                            # Loop Header
+                                                            # Inner Loop
+                                                            # Inside Loop BB1_3 Depth 1
+	movups	(%eax), %xmm5
+	addps	.LCPI1_4, %xmm5
+	movss	%xmm5, (%eax)
+	pshufd	$1, %xmm5, %xmm6
+	movss	%xmm6, 4(%eax)
+	pshufd	$3, %xmm5, %xmm6
+	movhlps	%xmm5, %xmm5
+	movss	%xmm5, 8(%eax)
+	movss	%xmm6, 12(%eax)
+	addss	%xmm4, %xmm0
+	addl	$16, %eax
+	decl	%ecx
+	movaps	%xmm1, %xmm4
+	jne	.LBB1_6
+	jmp	.LBB1_9
+.LBB1_7:                                                    # %bb15.i69.i.i.i
+                                                            # Loop Depth 2
+                                                            # Loop Header is BB1_12
+                                                            # Inner Loop
+                                                            # Inside Loop BB1_3 Depth 1
+	movl	28(%esp), %edx
+	movl	-1269403640(%edx,%esi,4), %edx
+	movl	%edx, %ebx
+	movzbl	%bl, %esi
+	cvtsi2ss	%esi, %xmm6
+	mulss	%xmm2, %xmm6
+	shrl	$16, %edx
+	movzbl	%dl, %edx
+	cvtsi2ss	%edx, %xmm5
+	mulss	%xmm2, %xmm5
+	unpcklps	%xmm6, %xmm5
+	movzbl	%bh, %edx
+	cvtsi2ss	%edx, %xmm6
+	mulss	%xmm2, %xmm6
+	unpcklps	%xmm3, %xmm6
+	unpcklps	%xmm6, %xmm5
+.LBB1_8:                                                    # %sampler_render_function.exit
+                                                            # Loop Depth 2
+                                                            # Loop Header is BB1_12
+                                                            # Inner Loop
+                                                            # Inside Loop BB1_3 Depth 1
+	pshufd	$3, %xmm5, %xmm6
+	movss	.LCPI1_3, %xmm7
+	subss	%xmm6, %xmm7
+	pshufd	$0, %xmm7, %xmm6
+	mulps	%xmm4, %xmm6
+	addps	%xmm5, %xmm6
+	movss	%xmm6, (%eax)
+	pshufd	$1, %xmm6, %xmm4
+	movss	%xmm4, 4(%eax)
+	pshufd	$3, %xmm6, %xmm4
+	movhlps	%xmm6, %xmm6
+	movss	%xmm6, 8(%eax)
+	movss	%xmm4, 12(%eax)
+	addl	$16, %eax
+	decl	%ecx
+	movaps	%xmm1, %xmm4
+	jne	.LBB1_12
+.LBB1_9:                                                    # %bb5.split
+                                                            # Loop Depth 1
+                                                            # Loop Header is BB1_3
+	movl	24(%esp), %eax
+	addl	20(%ebp), %eax
+	movl	%eax, 24(%esp)
+	movl	12(%esp), %eax
+	incl	%eax
+	movl	%eax, 12(%esp)
+	cmpl	16(%ebp), %eax
+	movss	(%esp), %xmm0
+	jb	.LBB1_3
+.LBB1_10:                                                   # %return
+	addl	$40, %esp
+	popl	%esi
+	popl	%ebx
+	movl	%ebp, %esp
+	popl	%ebp
+	ret
+.LBB1_11:                                                   # %bb1.preheader
+                                                            # Loop Depth 1
+                                                            # Loop Header is BB1_3
+	movl	24(%esp), %eax
+	movl	4(%esp), %ecx
+	movss	16(%esp), %xmm0
+	movss	20(%esp), %xmm4
+.LBB1_12:                                                   # %bb1
+                                                            # Loop Depth 2
+                                                            # Loop Header
+                                                            # Inner Loop
+                                                            # Inside Loop BB1_3 Depth 1
+	addss	%xmm4, %xmm0
+	pxor	%xmm4, %xmm4
+	ucomiss	%xmm0, %xmm4
+	movl	$0, %edx
+	movl	$4294967295, %esi
+	cmova	%esi, %edx
+	cvttss2si	%xmm0, %esi
+	addl	%edx, %esi
+	movups	(%eax), %xmm4
+	js	.LBB1_14
+.LBB1_13:                                                   # %bb1
+                                                            # Loop Depth 2
+                                                            # Loop Header is BB1_12
+                                                            # Inner Loop
+                                                            # Inside Loop BB1_3 Depth 1
+	cmpl	$512, %esi
+	jb	.LBB1_7
+.LBB1_14:                                                   # %bb1.sampler_render_function.exit_crit_edge
+                                                            # Loop Depth 2
+                                                            # Loop Header is BB1_12
+                                                            # Inner Loop
+                                                            # Inside Loop BB1_3 Depth 1
+	xorps	%xmm5, %xmm5
+	jmp	.LBB1_8
+	.size	render_FIRTREE_FORMAT_RGBA_F32_PREMULTIPLIED, .-render_FIRTREE_FORMAT_RGBA_F32_PREMULTIPLIED
+
+

@@ -1,0 +1,20 @@
+; Builtins
+declare <4 x float> @sin_v2(<4 x float>) nounwind readnone
+declare <4 x float> @sample_image_buffer_nn(i8*, i32, i32, i32, i32, <4 x float>)
+
+; Sampler function
+define <4 x float> 
+  @sampler_8e662b89_bf6d_26f4_412b_61c73e556e92(<4 x float>) {
+entry:
+  %tmp3.i = fdiv <4 x float> %0, <float 1.000000e+01, float 1.000000e+01, 
+    float 0.000000e+00, float 0.000000e+00> 
+  %tmp4.i = call <4 x float> @sin_v2(<4 x float> %tmp3.i) nounwind 
+  %tmp8.i = fmul <4 x float> %tmp4.i, <float 5.000000e+00, float 5.000000e+00, 
+    float 0.000000e+00, float 0.000000e+00> 
+  %tmp9.i = fadd <4 x float> %tmp8.i, %0          
+  %rv.i.i.i = call <4 x float> @sample_image_buffer_nn(
+    i8* inttoptr (i64 -1269264376 to i8*), i32 13, i32 512, i32 512, i32 2048, 
+    <4 x float> %tmp9.i) nounwind 
+  ret <4 x float> %rv.i.i.i
+}
+

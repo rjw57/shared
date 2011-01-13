@@ -1,0 +1,370 @@
+	.file	""
+
+
+	.section	.rodata.cst8,"aM",@progbits,8
+	.align	8
+.LCPI1_0:                                                   # constant double
+	.quad	4841369599423283200                         # double 4.503600e+15
+	.section	.rodata.cst4,"aM",@progbits,4
+	.align	4
+.LCPI1_1:                                                   # constant float
+	.long	1056964608                                  # float 5.000000e-01
+.LCPI1_2:                                                   # constant float
+	.long	998277249                                   # float 3.921569e-03
+.LCPI1_3:                                                   # constant float
+	.long	1065353216                                  # float 1.000000e+00
+.LCPI1_4:                                                   # constant float
+	.long	1132396544                                  # float 2.550000e+02
+	.section	.rodata.cst16,"aM",@progbits,16
+	.align	16
+.LCPI1_5:                                                   # constant <4 x float>
+	.long	1050220167                                  # float 2.990000e-01
+	.long	1058424226                                  # float 5.870000e-01
+	.long	1038710997                                  # float 1.140000e-01
+	.zero	4
+.LCPI1_6:                                                   # constant <4 x i32>
+	.zero	16
+	.text
+	.align	16
+	.globl	render_FIRTREE_FORMAT_RGBA32
+	.type	render_FIRTREE_FORMAT_RGBA32,@function
+render_FIRTREE_FORMAT_RGBA32:                               # @render_FIRTREE_FORMAT_RGBA32
+.LBB1_0:                                                    # %entry
+	pushl	%ebp
+	movl	%esp, %ebp
+	andl	$-16, %esp
+	pushl	%ebx
+	pushl	%edi
+	pushl	%esi
+	subl	$100, %esp
+	cmpl	$0, 16(%ebp)
+	je	.LBB1_15
+.LBB1_1:                                                    # %entry
+	movl	12(%ebp), %eax
+	testl	%eax, %eax
+	je	.LBB1_15
+.LBB1_2:                                                    # %bb.nph33.split
+	movsd	.LCPI1_0, %xmm0
+	movd	16(%ebp), %xmm1
+	orps	%xmm0, %xmm1
+	subsd	%xmm0, %xmm1
+	cvtsd2ss	%xmm1, %xmm1
+	movl	24(%ebp), %ecx
+	movss	12(%ecx), %xmm2
+	divss	%xmm1, %xmm2
+	movss	%xmm2, 4(%esp)
+	movaps	%xmm2, %xmm1
+	movss	.LCPI1_1, %xmm2
+	mulss	%xmm2, %xmm1
+	movss	%xmm1, 12(%esp)
+	movd	%eax, %xmm1
+	orps	%xmm0, %xmm1
+	subsd	%xmm0, %xmm1
+	cvtsd2ss	%xmm1, %xmm0
+	movss	8(%ecx), %xmm1
+	divss	%xmm0, %xmm1
+	movss	%xmm1, 60(%esp)
+	mulss	%xmm1, %xmm2
+	movss	%xmm2, 16(%esp)
+	movss	4(%ecx), %xmm0
+	movss	(%ecx), %xmm1
+	movss	%xmm1, 20(%esp)
+	movl	8(%ebp), %ecx
+	cmpl	$1, %eax
+	movl	$1, %edx
+	cmova	%eax, %edx
+	movl	%edx, 28(%esp)
+	movl	$0, 8(%esp)
+	movss	.LCPI1_2, %xmm1
+	movss	.LCPI1_3, %xmm2
+	movaps	%xmm2, 32(%esp)
+.LBB1_3:                                                    # %bb
+                                                            # Loop Depth 1
+                                                            # Loop Header
+                                                            #   Child Loop BB1_8 Depth 2
+                                                            #   Child Loop BB1_6 Depth 2
+	movss	12(%esp), %xmm2
+	addss	%xmm0, %xmm2
+	movss	%xmm2, 12(%esp)
+	pxor	%xmm0, %xmm0
+	ucomiss	%xmm2, %xmm0
+	movl	$0, %eax
+	movl	$4294967295, %edx
+	cmova	%edx, %eax
+	cvttss2si	%xmm2, %edx
+	leal	(%eax,%edx), %esi
+	shll	$11, %esi
+	addl	%edx, %eax
+	js	.LBB1_5
+.LBB1_4:                                                    # %bb
+                                                            # Loop Depth 1
+                                                            # Loop Header is BB1_3
+	cmpl	$512, %eax
+	jb	.LBB1_7
+.LBB1_5:                                                    # %bb.pack_pixel.exit.us_crit_edge
+                                                            # Loop Depth 1
+                                                            # Loop Header is BB1_3
+	xorl	%esi, %esi
+	movss	16(%esp), %xmm0
+	movss	20(%esp), %xmm2
+	.align	16
+.LBB1_6:                                                    # %pack_pixel.exit.us
+                                                            # Loop Depth 2
+                                                            # Loop Header
+                                                            # Inner Loop
+                                                            # Inside Loop BB1_3 Depth 1
+	movl	(%ecx,%esi,4), %eax
+	movl	%eax, %edx
+	shrl	$24, %edx
+	cvtsi2ss	%edx, %xmm3
+	mulss	%xmm1, %xmm3
+	movzbl	%ah, %edx
+	cvtsi2ss	%edx, %xmm4
+	mulss	%xmm1, %xmm4
+	unpcklps	%xmm3, %xmm4
+	movzbl	%al, %edx
+	cvtsi2ss	%edx, %xmm5
+	mulss	%xmm1, %xmm5
+	shrl	$16, %eax
+	movzbl	%al, %eax
+	cvtsi2ss	%eax, %xmm6
+	mulss	%xmm1, %xmm6
+	unpcklps	%xmm6, %xmm5
+	unpcklps	%xmm4, %xmm5
+	pshufd	$3, %xmm5, %xmm4
+	movaps	%xmm3, %xmm6
+	movlhps	%xmm4, %xmm6
+	shufps	$226, %xmm4, %xmm6
+	shufps	$48, %xmm6, %xmm3
+	shufps	$132, %xmm3, %xmm6
+	movaps	%xmm6, %xmm3
+	movaps	32(%esp), %xmm4
+	movss	%xmm4, %xmm3
+	shufps	$36, %xmm3, %xmm6
+	mulps	%xmm5, %xmm6
+	addps	.LCPI1_6, %xmm6
+	pshufd	$3, %xmm6, %xmm3
+	movaps	%xmm6, %xmm4
+	divss	%xmm3, %xmm4
+	movss	.LCPI1_4, %xmm5
+	mulss	%xmm5, %xmm4
+	cvttss2si	%xmm4, %eax
+	movzbl	%al, %eax
+	pshufd	$1, %xmm6, %xmm4
+	divss	%xmm3, %xmm4
+	mulss	%xmm5, %xmm4
+	cvttss2si	%xmm4, %edx
+	shll	$8, %edx
+	movzwl	%dx, %edx
+	orl	%eax, %edx
+	movhlps	%xmm6, %xmm6
+	divss	%xmm3, %xmm6
+	mulss	%xmm5, %xmm6
+	cvttss2si	%xmm6, %eax
+	shll	$16, %eax
+	andl	$16711680, %eax
+	orl	%edx, %eax
+	mulss	%xmm5, %xmm3
+	cvttss2si	%xmm3, %edx
+	shll	$24, %edx
+	orl	%eax, %edx
+	movl	%edx, (%ecx,%esi,4)
+	addss	%xmm2, %xmm0
+	incl	%esi
+	cmpl	28(%esp), %esi
+	movss	60(%esp), %xmm2
+	jne	.LBB1_6
+	jmp	.LBB1_14
+.LBB1_7:                                                    # %bb.pack_pixel.exit_crit_edge
+                                                            # Loop Depth 1
+                                                            # Loop Header is BB1_3
+	xorl	%eax, %eax
+	movl	28(%esp), %edx
+	movl	%edx, 24(%esp)
+	movss	16(%esp), %xmm0
+	movss	20(%esp), %xmm2
+	.align	16
+.LBB1_8:                                                    # %pack_pixel.exit
+                                                            # Loop Depth 2
+                                                            # Loop Header
+                                                            # Inner Loop
+                                                            # Inside Loop BB1_3 Depth 1
+	movl	(%ecx,%eax), %edx
+	movl	%edx, %edi
+	shrl	$24, %edi
+	cvtsi2ss	%edi, %xmm3
+	mulss	%xmm1, %xmm3
+	movzbl	%dh, %edi
+	cvtsi2ss	%edi, %xmm4
+	mulss	%xmm1, %xmm4
+	unpcklps	%xmm3, %xmm4
+	movzbl	%dl, %edi
+	cvtsi2ss	%edi, %xmm5
+	mulss	%xmm1, %xmm5
+	shrl	$16, %edx
+	movzbl	%dl, %edx
+	cvtsi2ss	%edx, %xmm6
+	mulss	%xmm1, %xmm6
+	unpcklps	%xmm6, %xmm5
+	unpcklps	%xmm4, %xmm5
+	pshufd	$3, %xmm5, %xmm4
+	movaps	%xmm3, %xmm6
+	movlhps	%xmm4, %xmm6
+	shufps	$226, %xmm4, %xmm6
+	shufps	$48, %xmm6, %xmm3
+	shufps	$132, %xmm3, %xmm6
+	movaps	%xmm6, %xmm3
+	movaps	32(%esp), %xmm4
+	movss	%xmm4, %xmm3
+	shufps	$36, %xmm3, %xmm6
+	mulps	%xmm5, %xmm6
+	addss	%xmm2, %xmm0
+	pxor	%xmm2, %xmm2
+	ucomiss	%xmm0, %xmm2
+	movl	$0, %edx
+	movl	$4294967295, %edi
+	cmova	%edi, %edx
+	cvttss2si	%xmm0, %edi
+	addl	%edx, %edi
+	js	.LBB1_16
+.LBB1_9:                                                    # %pack_pixel.exit
+                                                            # Loop Depth 2
+                                                            # Loop Header is BB1_8
+                                                            # Inner Loop
+                                                            # Inside Loop BB1_3 Depth 1
+	cmpl	$512, %edi
+	jae	.LBB1_16
+.LBB1_10:                                                   # %bb15.i69.i.i.i
+                                                            # Loop Depth 2
+                                                            # Loop Header is BB1_8
+                                                            # Inner Loop
+                                                            # Inside Loop BB1_3 Depth 1
+	movl	-1274531832(%esi,%edi,4), %edx
+	movl	%edx, %ebx
+	movzbl	%bl, %edi
+	cvtsi2ss	%edi, %xmm3
+	mulss	%xmm1, %xmm3
+	shrl	$16, %edx
+	movzbl	%dl, %edx
+	cvtsi2ss	%edx, %xmm2
+	mulss	%xmm1, %xmm2
+	unpcklps	%xmm3, %xmm2
+	movzbl	%bh, %edx
+	cvtsi2ss	%edx, %xmm3
+	mulss	%xmm1, %xmm3
+	unpcklps	%xmm4, %xmm3
+	unpcklps	%xmm3, %xmm2
+.LBB1_11:                                                   # %sample_image_buffer_nn.exit.i.i
+                                                            # Loop Depth 2
+                                                            # Loop Header is BB1_8
+                                                            # Inner Loop
+                                                            # Inside Loop BB1_3 Depth 1
+	pshufd	$3, %xmm2, %xmm3
+	pxor	%xmm4, %xmm4
+	ucomiss	%xmm4, %xmm3
+	jne	.LBB1_12
+	jp	.LBB1_12
+	jmp	.LBB1_13
+.LBB1_12:                                                   # %continue.i.i.i
+                                                            # Loop Depth 2
+                                                            # Loop Header is BB1_8
+                                                            # Inner Loop
+                                                            # Inside Loop BB1_3 Depth 1
+	divss	.LCPI1_3, %xmm3
+	movss	%xmm3, 72(%esp)
+	movss	%xmm3, 68(%esp)
+	movss	%xmm3, 64(%esp)
+	movl	$1065353216, 76(%esp)
+	mulps	64(%esp), %xmm2
+.LBB1_13:                                                   # %sampler_render_function.exit
+                                                            # Loop Depth 2
+                                                            # Loop Header is BB1_8
+                                                            # Inner Loop
+                                                            # Inside Loop BB1_3 Depth 1
+	movaps	%xmm2, %xmm3
+	mulps	.LCPI1_5, %xmm3
+	pshufd	$1, %xmm3, %xmm4
+	addss	%xmm3, %xmm4
+	pshufd	$3, %xmm3, %xmm5
+	movhlps	%xmm3, %xmm3
+	addss	%xmm4, %xmm3
+	addss	%xmm3, %xmm5
+	pshufd	$0, %xmm5, %xmm3
+	movaps	%xmm2, %xmm4
+	shufps	$35, %xmm3, %xmm4
+	shufps	$36, %xmm4, %xmm3
+	pshufd	$3, %xmm3, %xmm4
+	pshufd	$3, %xmm2, %xmm2
+	movaps	%xmm2, %xmm5
+	movlhps	%xmm4, %xmm5
+	shufps	$226, %xmm4, %xmm5
+	shufps	$48, %xmm5, %xmm2
+	shufps	$132, %xmm2, %xmm5
+	movss	.LCPI1_3, %xmm2
+	movaps	%xmm5, %xmm7
+	movss	%xmm2, %xmm7
+	shufps	$36, %xmm7, %xmm5
+	mulps	%xmm3, %xmm5
+	pshufd	$3, %xmm5, %xmm3
+	subss	%xmm3, %xmm2
+	pshufd	$0, %xmm2, %xmm2
+	mulps	%xmm6, %xmm2
+	addps	%xmm5, %xmm2
+	pshufd	$3, %xmm2, %xmm3
+	movaps	%xmm2, %xmm4
+	divss	%xmm3, %xmm4
+	movss	.LCPI1_4, %xmm5
+	mulss	%xmm5, %xmm4
+	cvttss2si	%xmm4, %edx
+	movzbl	%dl, %edx
+	pshufd	$1, %xmm2, %xmm4
+	divss	%xmm3, %xmm4
+	mulss	%xmm5, %xmm4
+	cvttss2si	%xmm4, %edi
+	shll	$8, %edi
+	movzwl	%di, %edi
+	orl	%edx, %edi
+	movhlps	%xmm2, %xmm2
+	divss	%xmm3, %xmm2
+	mulss	%xmm5, %xmm2
+	cvttss2si	%xmm2, %edx
+	shll	$16, %edx
+	andl	$16711680, %edx
+	orl	%edi, %edx
+	mulss	%xmm5, %xmm3
+	cvttss2si	%xmm3, %edi
+	shll	$24, %edi
+	orl	%edx, %edi
+	movl	%edi, (%eax,%ecx)
+	addl	$4, %eax
+	decl	24(%esp)
+	movss	60(%esp), %xmm2
+	jne	.LBB1_8
+.LBB1_14:                                                   # %bb5.split
+                                                            # Loop Depth 1
+                                                            # Loop Header is BB1_3
+	addl	20(%ebp), %ecx
+	movl	8(%esp), %eax
+	incl	%eax
+	movl	%eax, 8(%esp)
+	cmpl	16(%ebp), %eax
+	movss	4(%esp), %xmm0
+	jb	.LBB1_3
+.LBB1_15:                                                   # %return
+	addl	$100, %esp
+	popl	%esi
+	popl	%edi
+	popl	%ebx
+	movl	%ebp, %esp
+	popl	%ebp
+	ret
+.LBB1_16:                                                   # %pack_pixel.exit.sample_image_buffer_nn.exit.i.i_crit_edge
+                                                            # Loop Depth 2
+                                                            # Loop Header is BB1_8
+                                                            # Inner Loop
+                                                            # Inside Loop BB1_3 Depth 1
+	xorps	%xmm2, %xmm2
+	jmp	.LBB1_11
+	.size	render_FIRTREE_FORMAT_RGBA32, .-render_FIRTREE_FORMAT_RGBA32
+
+

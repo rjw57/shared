@@ -1,0 +1,30 @@
+\beamer@endinputifotherversion {3.07pt}
+\select@language {english}
+\beamer@sectionintoc {1}{About Me}{4}{1}{1}
+\beamer@sectionintoc {2}{The Firtree Project}{5}{1}{2}
+\beamer@sectionintoc {3}{Requirements}{6}{1}{3}
+\beamer@sectionintoc {4}{Motivation}{7}{1}{4}
+\beamer@sectionintoc {5}{Existing Solutions}{8}{1}{5}
+\beamer@subsectionintoc {5}{1}{Plain C}{8}{1}{5}
+\beamer@subsectionintoc {5}{2}{GLSL}{12}{1}{5}
+\beamer@subsectionintoc {5}{3}{CoreImage}{16}{1}{5}
+\beamer@subsectionintoc {5}{4}{MapReduce}{21}{1}{5}
+\beamer@sectionintoc {6}{Lessons Learned}{26}{1}{6}
+\beamer@sectionintoc {7}{The Firtree Image Model}{29}{2}{7}
+\beamer@sectionintoc {8}{API Bindings}{30}{2}{8}
+\beamer@subsectionintoc {8}{1}{GObject}{31}{2}{8}
+\beamer@subsectionintoc {8}{2}{Python}{34}{2}{8}
+\beamer@sectionintoc {9}{Samplers}{40}{2}{9}
+\beamer@sectionintoc {10}{Sampler Types}{41}{2}{10}
+\beamer@sectionintoc {11}{The Firtree Kernel Language}{42}{2}{11}
+\beamer@sectionintoc {12}{Desaturate}{45}{3}{12}
+\beamer@sectionintoc {13}{Sobel Filter}{51}{3}{13}
+\beamer@sectionintoc {14}{Mandelbrot Set}{60}{3}{14}
+\beamer@sectionintoc {15}{Reduce Kernels}{63}{3}{15}
+\beamer@sectionintoc {16}{Real-time Video Processing}{70}{3}{16}
+\beamer@sectionintoc {17}{Compilation Process}{74}{4}{17}
+\beamer@sectionintoc {18}{LLVM}{76}{4}{18}
+\beamer@sectionintoc {19}{Sampler Linking}{80}{4}{19}
+\beamer@sectionintoc {20}{Backends}{84}{4}{20}
+\beamer@subsectionintoc {20}{1}{Multi-core CPU}{85}{4}{20}
+\beamer@subsectionintoc {20}{2}{The future: GPU}{88}{4}{20}

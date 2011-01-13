@@ -1,0 +1,15 @@
+; Builtin IR intrinsic
+declare <4 x float> @sample_image_buffer_nn(
+    i8*, i32, i32, i32, i32, <4 x float>)
+
+; Sampler function itself
+define <4 x float> 
+  @sampler_dc2e6e61_1920_08f4_898f_2456c40f1e6b(<4 x float>) {
+entry:
+  %rv = call <4 x float> @sample_image_buffer_nn(
+    i8* inttoptr (i64 -1270542328 to i8*), 
+    i32 13, i32 512, i32 512, 
+    i32 2048, <4 x float> %0) ; <<4 x float>> [#uses=1]
+  ret <4 x float> %rv
+}
+

@@ -1,0 +1,32 @@
+\BOOKMARK [1][]{Outline1}{Introduction}{}
+\BOOKMARK [2][]{Outline1.1}{About Me}{Outline1}
+\BOOKMARK [2][]{Outline1.2}{The Firtree Project}{Outline1}
+\BOOKMARK [2][]{Outline1.3}{Requirements}{Outline1}
+\BOOKMARK [2][]{Outline1.4}{Motivation}{Outline1}
+\BOOKMARK [2][]{Outline1.5}{Existing Solutions}{Outline1}
+\BOOKMARK [3][]{Outline1.5.1.8}{Plain C}{Outline1.5}
+\BOOKMARK [3][]{Outline1.5.2.12}{GLSL}{Outline1.5}
+\BOOKMARK [3][]{Outline1.5.3.16}{CoreImage}{Outline1.5}
+\BOOKMARK [3][]{Outline1.5.4.21}{MapReduce}{Outline1.5}
+\BOOKMARK [2][]{Outline1.6}{Lessons Learned}{Outline1}
+\BOOKMARK [1][]{Outline2}{The Firtree API}{}
+\BOOKMARK [2][]{Outline2.7}{The Firtree Image Model}{Outline2}
+\BOOKMARK [2][]{Outline2.8}{API Bindings}{Outline2}
+\BOOKMARK [3][]{Outline2.8.1.31}{GObject}{Outline2.8}
+\BOOKMARK [3][]{Outline2.8.2.34}{Python}{Outline2.8}
+\BOOKMARK [2][]{Outline2.9}{Samplers}{Outline2}
+\BOOKMARK [2][]{Outline2.10}{Sampler Types}{Outline2}
+\BOOKMARK [2][]{Outline2.11}{The Firtree Kernel Language}{Outline2}
+\BOOKMARK [1][]{Outline3}{Examples}{}
+\BOOKMARK [2][]{Outline3.12}{Desaturate}{Outline3}
+\BOOKMARK [2][]{Outline3.13}{Sobel Filter}{Outline3}
+\BOOKMARK [2][]{Outline3.14}{Mandelbrot Set}{Outline3}
+\BOOKMARK [2][]{Outline3.15}{Reduce Kernels}{Outline3}
+\BOOKMARK [2][]{Outline3.16}{Real-time Video Processing}{Outline3}
+\BOOKMARK [1][]{Outline4}{Implementation}{}
+\BOOKMARK [2][]{Outline4.17}{Compilation Process}{Outline4}
+\BOOKMARK [2][]{Outline4.18}{LLVM}{Outline4}
+\BOOKMARK [2][]{Outline4.19}{Sampler Linking}{Outline4}
+\BOOKMARK [2][]{Outline4.20}{Backends}{Outline4}
+\BOOKMARK [3][]{Outline4.20.1.85}{Multi-core CPU}{Outline4.20}
+\BOOKMARK [3][]{Outline4.20.2.88}{The future: GPU}{Outline4.20}
